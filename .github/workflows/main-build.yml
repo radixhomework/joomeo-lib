@@ -23,7 +23,7 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Create test configuration file
-      run: echo ${{ secret.TEST_CONFIGURATION_FILE }} > src/test/resources/application.yml
+      run: echo ${{ secrets.TEST_CONFIGURATION_FILE }} > src/test/resources/application.yml
     - name: Build with Maven
       run: mvn clean install
     - name: Remove test configuration file
