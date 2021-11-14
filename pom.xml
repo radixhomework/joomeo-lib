@@ -52,7 +52,8 @@
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <sonar.organization>io.github.radixhomework</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.organization>radixhomework</sonar.organization>
         <sonar.projectKey>${project.artifactId}</sonar.projectKey>
 
         <lombok.version>1.18.22</lombok.version>
