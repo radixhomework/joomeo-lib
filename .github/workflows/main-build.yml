@@ -24,6 +24,7 @@ jobs:
         cache: maven
     - name: Create test configuration file
       run: |
+        ls
         echo "joomeo:" > src/test/resources/application.yml
         echo "  base-url: ${{ secrets.JOOMEO_API_URL }}"
         echo "  api-key: ${{ secrets.JOOMEO_API_KEY }}"
