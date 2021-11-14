@@ -24,12 +24,12 @@ jobs:
         cache: maven
     - name: Create test configuration file
       run: |
-        ls
-        echo "joomeo:" > src/test/resources/application.yml
-        echo "  base-url: ${{ secrets.JOOMEO_API_URL }}"
-        echo "  api-key: ${{ secrets.JOOMEO_API_KEY }}"
-        echo "  login: ${{ secrets.JOOMEO_LOGIN }}"
-        echo "  password: ${{ secrets.JOOMEO_PASSWORD }}"
+        touch src/test/resources/application.yml
+        echo "joomeo:" >> src/test/resources/application.yml
+        echo "  base-url: ${{ secrets.JOOMEO_API_URL }}" >> src/test/resources/application.yml
+        echo "  api-key: ${{ secrets.JOOMEO_API_KEY }}" >> src/test/resources/application.yml
+        echo "  login: ${{ secrets.JOOMEO_LOGIN }}" >> src/test/resources/application.yml
+        echo "  password: ${{ secrets.JOOMEO_PASSWORD }}" >> src/test/resources/application.yml
     - name: Build with Maven
       run: mvn clean install
     - name: Remove test configuration file
