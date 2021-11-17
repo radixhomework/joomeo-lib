@@ -8,7 +8,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 @Slf4j
@@ -16,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public abstract class AbstractService implements IService {
 
+    protected static final String SPACE_NAME = "{spacename}";
     protected final RestTemplate restTemplate;
     protected final JoomeoApiClient client;
 
@@ -30,25 +30,14 @@ public abstract class AbstractService implements IService {
      */
     @SuppressWarnings("java:S2259") // NPE found can't happen
     private <T, V> T call(String endpoint, HttpMethod verb, HttpEntity<V> entity, Class<T> clazz) {
-        try {
-            log.debug(entity.getHeaders().toString());
-            if (entity.getBody() != null) {
-                log.debug(entity.getBody().toString());
-            }
-            String url = client.getBaseUrl() + endpoint;
-            ResponseEntity<T> response = restTemplate.exchange(url, verb, entity, clazz);
-            log.info("{} - {} {}", response.getStatusCode(), verb, url);
-            return response.getBody();
-        } catch (RestClientException rce) {
-            log.error("Error while calling endpoint", rce);
+        log.debug(entity.getHeaders().toString());
+        if (entity.getBody() != null) {
+            log.debug(entity.getBody().toString());
         }
-
-        try {
-            return clazz.getDeclaredConstructor().newInstance();
-        } catch (Exception e) {
-            log.error("Unable to instantiate an empty {}", clazz.getName());
-        }
-        return null;
+        String url = client.getBaseUrl() + endpoint;
+        ResponseEntity<T> response = restTemplate.exchange(url, verb, entity, clazz);
+        log.info("{} - {} {}", response.getStatusCode(), verb, url);
+        return response.getBody();
     }
 
     /**
@@ -95,6 +84,10 @@ public abstract class AbstractService implements IService {
     protected <V> void delete(HttpEntity<V> entity) {
         log.debug("Calling DELETE {}", getEndpoint());
         call(getEndpoint(), HttpMethod.DELETE, entity, String.class);
+    }
+
+    protected String getFullEndpoint() {
+        return getEndpoint().replace(SPACE_NAME, client.getSpaceName());
     }
 
 }

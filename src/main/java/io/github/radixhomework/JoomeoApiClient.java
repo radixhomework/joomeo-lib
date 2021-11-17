@@ -72,8 +72,16 @@ public class JoomeoApiClient {
      * @return The current sessionId.
      */
     public String getSessionId() {
-        if (session != null && session.getSessionid() != null && !session.getSessionid().isEmpty()) {
-            return session.getSessionid();
+        if (session != null && session.getSessionId() != null && !session.getSessionId().isEmpty()) {
+            return session.getSessionId();
+        } else {
+            return null;
+        }
+    }
+
+    public String getSpaceName() {
+        if (session != null && session.getSpaceName() != null && !session.getSpaceName().isEmpty()) {
+            return session.getSpaceName();
         } else {
             return null;
         }
