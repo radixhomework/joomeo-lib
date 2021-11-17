@@ -35,8 +35,11 @@ public class User {
     @JsonProperty("privateURL")
     private String privateURL;
 
+    /**
+     * @deprecated Will be removed in September 2023
+     */
     @JsonProperty("privateURLHtml")
-    @Deprecated(forRemoval = true) // September 2023
+    @Deprecated(since = "1.0.0", forRemoval = true)
     private String privateURLHtml;
 
     @JsonProperty("coverMessage")
@@ -48,11 +51,14 @@ public class User {
     @JsonProperty("status")
     private EnumUserStatus status;
 
+    /**
+     * @deprecated Not planned to be removed for now
+     */
     @JsonProperty("subscriptionid")
-    @Deprecated
+    @Deprecated(since = "1.0.0")
     private Integer subscriptionId;
 
-    // FIXME: Bad format in API definition => integer<int32>
+    // Bad format in API definition => integer<int32>
     @JsonProperty("offerid")
     private String offerId;
 
@@ -158,7 +164,7 @@ public class User {
     @JsonProperty("userType")
     private EnumUserType userType;
 
-    // FIXME: Not found in API definition...
+    // Not found in API definition...
     @JsonProperty("privateURLFlash")
     private String privateURLFlash;
 
