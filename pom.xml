@@ -58,6 +58,11 @@
         <sonar.coverage.jacoco.xmlReportPaths>
             ${project.build.directory}/site/jacoco/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.coverage.exclusions>
+            io/github/radixhomework/model/**,
+            io/github/radixhomework/enums/**,
+            io/github/radixhomework/JoomeoApiClient.class
+        </sonar.coverage.exclusions>
 
         <lombok.version>1.18.22</lombok.version>
 
