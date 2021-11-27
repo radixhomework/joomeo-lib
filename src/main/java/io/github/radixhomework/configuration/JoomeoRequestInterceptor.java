@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-import static io.github.radixhomework.enums.EnumJoomeoHeader.X_API_KEY;
-import static io.github.radixhomework.enums.EnumJoomeoHeader.X_SESSIONID;
+import static io.github.radixhomework.enums.JoomeoHeader.X_API_KEY;
+import static io.github.radixhomework.enums.JoomeoHeader.X_SESSION_ID;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -38,7 +38,7 @@ public class JoomeoRequestInterceptor implements ClientHttpRequestInterceptor {
 
         // Adding session id if not null
         if (client.getSessionId() != null && !client.getSessionId().isEmpty()) {
-            request.getHeaders().add(X_SESSIONID.value(), client.getSessionId());
+            request.getHeaders().add(X_SESSION_ID.value(), client.getSessionId());
         }
 
         traceRequest(request, body);

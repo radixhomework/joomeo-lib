@@ -161,8 +161,8 @@
                 <version>0.8.7</version>
                 <configuration>
                     <excludes>
-                        <exclude>io/github/radixhomework/model/*</exclude>
-                        <exclude>io/github/radixhomework/enums/*</exclude>
+                        <exclude>io/github/radixhomework/model/**</exclude>
+                        <exclude>io/github/radixhomework/enums/**</exclude>
                         <exclude>io/github/radixhomework/JoomeoApiClient.class</exclude>
                     </excludes>
                 </configuration>

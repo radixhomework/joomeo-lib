@@ -1,4 +1,4 @@
-package io.github.radixhomework.enums;
+package io.github.radixhomework.enums.type;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Getter
 @AllArgsConstructor
-public enum EnumUserStatus {
+public enum UserStatus {
 
     ENABLED(0),
     DISABLE_MAIL_NOT_CONFIRMED(1),
@@ -17,9 +17,9 @@ public enum EnumUserStatus {
 
     private final int value;
 
-    public static EnumUserStatus fromValue(String value) {
+    public static UserStatus fromValue(String value) {
         try {
-            for (EnumUserStatus item : values()) {
+            for (UserStatus item : values()) {
                 if (Integer.parseInt(value) == item.getValue()) {
                     return item;
                 }

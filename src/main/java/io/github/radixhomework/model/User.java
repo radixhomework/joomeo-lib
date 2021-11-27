@@ -1,10 +1,10 @@
 package io.github.radixhomework.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.radixhomework.enums.EnumOrganisationType;
-import io.github.radixhomework.enums.EnumSex;
-import io.github.radixhomework.enums.EnumUserStatus;
-import io.github.radixhomework.enums.EnumUserType;
+import io.github.radixhomework.enums.type.OrganisationType;
+import io.github.radixhomework.enums.type.Sex;
+import io.github.radixhomework.enums.type.UserStatus;
+import io.github.radixhomework.enums.type.UserType;
 import lombok.Data;
 
 import java.time.OffsetDateTime;
@@ -49,7 +49,7 @@ public class User {
     private String userId;
 
     @JsonProperty("status")
-    private EnumUserStatus status;
+    private UserStatus status;
 
     /**
      * @deprecated Not planned to be removed for now
@@ -117,7 +117,7 @@ public class User {
     private String organisationFax;
 
     @JsonProperty("organisationType")
-    private EnumOrganisationType organisationType;
+    private OrganisationType organisationType;
 
     @JsonProperty("shippingFirstname")
     private String shippingFirstname;
@@ -138,7 +138,7 @@ public class User {
     private String shippingCountryCode;
 
     @JsonProperty("sex")
-    private EnumSex sex;
+    private Sex sex;
 
     @JsonProperty("birthdayDay")
     private Integer birthdayDay;
@@ -162,7 +162,7 @@ public class User {
     private boolean newsletter;
 
     @JsonProperty("userType")
-    private EnumUserType userType;
+    private UserType userType;
 
     // Not found in API definition...
     @JsonProperty("privateURLFlash")

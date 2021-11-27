@@ -1,7 +1,7 @@
 package io.github.radixhomework.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.radixhomework.enums.EnumSessionType;
+import io.github.radixhomework.enums.type.SessionType;
 import lombok.Data;
 
 @Data
@@ -11,7 +11,7 @@ public class Session {
     private String sessionId;
 
     @JsonProperty("sessionType")
-    private EnumSessionType sessionType;
+    private SessionType sessionType;
 
     @JsonProperty("spaceName")
     private String spaceName;
@@ -23,6 +23,6 @@ public class Session {
     private User user;
 
     public void setSessionType(String value) {
-        this.sessionType = EnumSessionType.fromValue(value);
+        this.sessionType = SessionType.fromValue(value);
     }
 }

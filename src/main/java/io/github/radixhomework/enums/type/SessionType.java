@@ -1,11 +1,11 @@
-package io.github.radixhomework.enums;
+package io.github.radixhomework.enums.type;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum EnumSessionType {
+public enum SessionType {
 
     AUTO(-1, "auto", true),
     MANAGER(0, "manager", true),
@@ -19,8 +19,8 @@ public enum EnumSessionType {
     private final String value;
     private final boolean forQuery;
 
-    public static EnumSessionType fromValue(String value) {
-        for (EnumSessionType item : EnumSessionType.values()) {
+    public static SessionType fromValue(String value) {
+        for (SessionType item : SessionType.values()) {
             if (item.getValue().equals(value)) {
                 return item;
             }

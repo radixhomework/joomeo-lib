@@ -3,8 +3,8 @@ package io.github.radixhomework.enums;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum EnumJoomeoHeader {
-    X_SESSIONID("X-SESSIONID"),
+public enum JoomeoHeader {
+    X_SESSION_ID("X-SESSIONID"),
     X_API_KEY("X-API-KEY"),
     X_COUNTRY("X-COUNTRY"),
     X_LANG("X-LANG"),

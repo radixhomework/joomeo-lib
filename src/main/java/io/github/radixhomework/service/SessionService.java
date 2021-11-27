@@ -1,8 +1,8 @@
 package io.github.radixhomework.service;
 
 import io.github.radixhomework.JoomeoApiClient;
-import io.github.radixhomework.enums.EnumDateTimeFormat;
-import io.github.radixhomework.enums.EnumSessionType;
+import io.github.radixhomework.enums.format.DateTimeFormat;
+import io.github.radixhomework.enums.type.SessionType;
 import io.github.radixhomework.model.NewSession;
 import io.github.radixhomework.model.Session;
 import lombok.Getter;
@@ -12,8 +12,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import static io.github.radixhomework.enums.EnumJoomeoHeader.X_DATETIME_FORMAT;
-import static io.github.radixhomework.enums.EnumJoomeoHeader.X_PAYLOAD_TYPE;
+import static io.github.radixhomework.enums.JoomeoHeader.X_DATETIME_FORMAT;
+import static io.github.radixhomework.enums.JoomeoHeader.X_PAYLOAD_TYPE;
 
 /**
  * <p>Session services.</p>
@@ -50,7 +50,7 @@ public class SessionService extends AbstractService {
      * Service for initializing a {@link Session}.
      * This if the first call to be done when using Joomeo's API.
      */
-    public void createSession(EnumSessionType sessionType) {
+    public void createSession(SessionType sessionType) {
         NewSession newSession = new NewSession();
         newSession.setLogin(client.getLogin());
         newSession.setPassword(client.getPassword());
@@ -77,7 +77,7 @@ public class SessionService extends AbstractService {
             log.info("Getting session {} information", client.getSessionId());
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add(X_DATETIME_FORMAT.value(), EnumDateTimeFormat.UTC.getValue());
+            headers.add(X_DATETIME_FORMAT.value(), DateTimeFormat.UTC.getValue());
             HttpEntity<NewSession> httpEntity = new HttpEntity<>(headers);
 
             Session session = get(httpEntity, Session.class);
@@ -86,7 +86,7 @@ public class SessionService extends AbstractService {
             return session;
         } else {
             throw new IllegalStateException("Cannot get session information because sessionId is null. May be no " +
-                    "session have been initialized ?");
+                    "session have been initialized?");
         }
     }
 
@@ -99,14 +99,14 @@ public class SessionService extends AbstractService {
             log.info("Deleting session {}", client.getSessionId());
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add(X_DATETIME_FORMAT.value(), EnumDateTimeFormat.UTC.getValue());
+            headers.add(X_DATETIME_FORMAT.value(), DateTimeFormat.UTC.getValue());
             HttpEntity<NewSession> httpEntity = new HttpEntity<>(headers);
 
             delete(httpEntity);
             client.clearSession();
         } else {
             throw new IllegalStateException("Cannot delete session because sessionId is null. May be no session have " +
-                    "been initialized ?");
+                    "been initialized?");
         }
     }
 }
